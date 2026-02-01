@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Skills</title>
+<link rel="stylesheet" href="sskils.css">
+</head>
+<body>
+    
+    <div class="stars"></div>
+    <div class="skills-heading">
+  <h2>MY SKILLS</h2>
+  <p>"Expert in anything was once a beginner" — Helen Hayes</p>
+</div>
+
+
+<div class="skills-container">
+  <div class="skill c-skills">
+    
+    <div class="bar">
+      <div class="progress" data-skill="50"><span class="percent">0%</span></div>
+    </div>
+    <p class="skills-heading"> C-LANGUAGE </p>
+  </div>
+   
+
+  <div class="skill javascript-skills">
+    
+    <div class="bar">
+      <div class="progress" data-skill="40"><span class="percent">0%</span></div>
+    </div>
+    <p class="skills-heading">JAVASCRIPT</p>
+  </div>
+
+
+  <div class="skill java-skills">
+    
+    <div class="bar">
+      <div class="progress" data-skill="20"><span class="percent">0%</span></div>
+    </div>
+    <p class="skills-heading">JAVA</p>
+  </div>
+
+  <div class="skill soft-skills">
+    <div class="bar">
+      <div class="progress" data-skill="70"><span class="percent">0%</span></div>
+    </div>
+    <p class="skills-heading">SOFT SKILLS</p>
+  </div>
+   <footer class="section-footer">
+  <p>© 2025 Pratishtha. All Rights Reserved.</p>
+
+  <div class="footer-links">
+    <a href="mailto:pratishthagautam2107@gmail.com">E-MAIL</a>
+    <a href="https://www.linkedin.com/in/pratishtha-251772286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkedIn</a>
+    <a href="https://github.com/PratishthaGautam07" target="_blank">GitHub</a>
+  </div>
+</footer>
+<header class="main-header">
+  
+  <nav class="nav-links">
+    <a href="landing.html">Home</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="aboutme.html">aboutme</a>
+  </nav>
+</header>
+</div>
+
+<script> 
+    document.addEventListener("DOMContentLoaded", () => {
+  const progresses = document.querySelectorAll(".progress");
+
+  progresses.forEach(bar => {
+    const value = parseInt(bar.getAttribute("data-skill"));
+    const percentText = bar.querySelector(".percent");
+    let current = 0;
+
+    // Smooth fill + counting animation
+    const fillAnimation = setInterval(() => {
+      if (current >= value) {
+        clearInterval(fillAnimation);
+      } else {
+        current++;
+        bar.style.width = current + "%";
+        percentText.textContent = current + "%";
+      }
+    }, 25); // adjust speed (lower = faster)
+  });
+});
+const starsContainer = document.querySelector('.stars');
+const numStars = 120; // adjust for density
+
+for (let i = 0; i < numStars; i++) {
+  const star = document.createElement('div');
+  star.classList.add('star');
+
+  // random size, position, and animation delay
+  const size = Math.random() * 2 + 1; // 1–3px
+  const x = Math.random() * 100;      // %
+  const y = Math.random() * 100;      // %
+  const delay = Math.random() * 5;    // seconds
+
+  star.style.width = `${size}px`;
+  star.style.height = `${size}px`;
+  star.style.left = `${x}%`;
+  star.style.top = `${y}%`;
+  star.style.animationDelay = `${delay}s`;
+
+  starsContainer.appendChild(star);
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My PROJECTS</title>
+  <link rel="stylesheet" href="sskils.css">
+</head>
+
+<body>
+
+<header class="main-header">
+  <nav class="nav-links">
+    <a href="landing.html">Home</a>
+    <a href="aboutme.html">About Me</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+  </nav>
+</header>
+
+<div class="stars"></div>
+
+<div class="skills-heading"> 
+  <h2>MY PROJECTS</h2>
+  <p>(turn over the cards and click the card to see the projects.)</p>
+</div>
+
+<div class="scene">
+  <div class="carousel">
+    <div class="card">EXTRA CARDS</div>
+
+    <div class="card">
+      <a href="JAVAPROJECTS.html">JAVA PROJECTS</a>
+    </div>
+
+    <div class="card">
+      <a href="JAVASCRIPTPROJECT.html">JAVASCRIPT PROJECTS</a>
+    </div>
+
+    <div class="card">Card 4</div>
+
+    <div class="card">
+      <a href="CPROJECT.html">C PROJECTS</a>
+    </div>
+  </div>
+</div>
+
+<footer class="section-footer">
+  <p>© 2025 Pratishtha. All Rights Reserved.</p>
+
+  <div class="footer-links">
+    <a href="mailto:pratishthagautam2107@gmail.com">E-MAIL</a>
+    <a href="https://www.linkedin.com/in/pratishtha-251772286" target="_blank">LinkedIn</a>
+    <a href="https://github.com/PratishthaGautam07" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  // ⭐ Stars
+  const starsContainer = document.querySelector('.stars');
+  const numStars = 120;
+
+  for (let i = 0; i < numStars; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+
+    const size = Math.random() * 2 + 1;
+    star.style.width = `${size}px`;
+    star.style.height = `${size}px`;
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+
+    starsContainer.appendChild(star);
+  }
+
+  // 🎡 Carousel
+  const carousel = document.querySelector(".carousel");
+  const scene = document.querySelector(".scene");
+  let isDragging = false;
+  let startX = 0;
+  let currentRotation = 0;
+
+  scene.addEventListener("mousedown", e => {
+    isDragging = true;
+    startX = e.clientX;
+  });
+
+  document.addEventListener("mouseup", () => isDragging = false);
+
+  document.addEventListener("mousemove", e => {
+    if (!isDragging) return;
+    const deltaX = e.clientX - startX;
+    startX = e.clientX;
+    currentRotation += deltaX * 0.5;
+    carousel.style.transform = `rotateY(${currentRotation}deg)`;
+  });
+
+  // 📱 Touch
+  scene.addEventListener("touchstart", e => {
+    isDragging = true;
+    startX = e.touches[0].clientX;
+  });
+
+  document.addEventListener("touchend", () => isDragging = false);
+
+  document.addEventListener("touchmove", e => {
+    if (!isDragging) return;
+    const deltaX = e.touches[0].clientX - startX;
+    startX = e.touches[0].clientX;
+    currentRotation += deltaX * 0.5;
+    carousel.style.transform = `rotateY(${currentRotation}deg)`;
+  });
+
+});
+</script>
+
+</body>
+</html>

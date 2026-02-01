@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAT'S PORTFOLIO</title>
+    <link rel="stylesheet" href="pratsp.css">
+  </head>
+
+  <body>
+    
+
+    <!-- ABOUT ME PAGE -->
+    <section class="aboutme">
+      <div class="bb"></div>
+      
+      <div class="layer img1"></div>
+      <div class="layer img2"></div>
+      <div class="layer img3"></div>
+      <div class="layer img4"></div>
+      <div class="intro-panel">
+        <h2 class="intro-name">PRATISHTHA</h2>
+        <p class="intro-tagline">Driving Innovation Through Code</p>
+      </div>
+    </section>
+
+    <!-- 🌌 LAST PAGE: GALAXY PORTALS -->
+    <section class="last-page">
+      <div class="stars"></div>
+       
+      <div class="portal-wrapper">
+        <div class="video-bg">
+  
+
+        <div class="backgroundd"></div>
+
+        <div class="portal-container">
+          <div class="galaxy-spin"></div>
+          <div class="portal" data-link="aboutme.html">
+            <h2>About Me</h2>
+            <div class="base-ring"></div>
+          </div>
+
+          <div class="portal" data-link="skills.html">
+            <h2>Skills</h2>
+            <div class="base-ring"></div>
+          </div>
+
+          <div class="portal" data-link="projects.html">
+            <h2>Projects</h2>
+            <div class="base-ring"></div>
+          </div>
+        </div>
+
+        <div class="warp-flash"></div>
+      </div>
+      
+    </section>
+
+    <!-- 🌠 STAR + PORTAL SCRIPT -->
+    <script>
+      /* --- STAR BACKGROUND --- */
+      const starsContainer = document.querySelector(".stars");
+      const numStars = 120;
+      for (let i = 0; i < numStars; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        const size = Math.random() * 2 + 1;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const delay = Math.random() * 5;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${x}%`;
+        star.style.top = `${y}%`;
+        star.style.animationDelay = `${delay}s`;
+        starsContainer.appendChild(star);
+      }
+
+      /* --- ABOUT ME PANEL ANIMATION --- */
+      const panel = document.querySelector(".intro-panel");
+      function animatePanel() {
+        panel.classList.add("active");
+        setTimeout(() => panel.classList.remove("active"), 7000);
+      }
+      animatePanel();
+      setInterval(animatePanel, 4000);
+
+      /* --- PORTAL GALAXY WARP EFFECT --- */
+      const portals = document.querySelectorAll(".portal");
+      const flash = document.querySelector(".warp-flash");
+
+      portals.forEach((portal) => {
+        portal.addEventListener("click", () => {
+          portal.classList.add("warping");
+          flash.style.opacity = "1";
+
+          setTimeout(() => {
+            flash.style.opacity = "0";
+            const link = portal.getAttribute("data-link");
+            if (link) window.location.href = link;
+          }, 1500);
+});
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+  
